@@ -1,4 +1,24 @@
+import os
 import numpy as np
+from rich.console import Console
+from rich.table import Column, Table
+
+
+console = Console()
+
+def print_grid(grid):
+
+    table = Table(show_footer=False, show_edge=True)
+
+    for i in range(grid.shape[0]):
+        table.add_column(str(i), width=1)
+
+    for i in range(grid.shape[0]):
+        table.add_row( *[ str(gi) for gi in grid[i]])
+    os.system("clear")
+    console.print(table)
+
+
 # Load data
 input_file = open("input.txt")
 grid = []
@@ -25,6 +45,7 @@ while len((grid == 0).nonzero()[0]) != grid.size:
 
     grid[grid == -1] = 0
     step += 1
+    print_grid(grid)
 
 print(f"Answer 1: {sum_flashes}")
 print(f"Answer 2: {step}")
