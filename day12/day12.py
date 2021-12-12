@@ -1,5 +1,6 @@
-from copy import deepcopy
+from copy import copy
 from collections import Counter
+import time
 
 # Load data
 input_file = open("input.txt")
@@ -24,16 +25,21 @@ def connect_path(paths, n):
                 continue
             # end of the road for this path
             if c == "end":
-                res.append(deepcopy(p) + [c])
+                res.append(copy(p) + [c])
                 continue
             # valid connection
             valid_connections.append(c)
         # Make new paths
-        new_paths = [deepcopy(p) + [vc] for vc in valid_connections]
+        new_paths = [copy(p) + [vc] for vc in valid_connections]
         # and continue ...
         res += connect_path(paths=new_paths, n=n)
     return res
 
+ts = time.time()
+print(f"Answer 1: {len(connect_path(paths=[['start']], n=1)) : >10} Duration:{round(time.time()-ts,2): >5} ")
+ts = time.time()
+print(f"Answer 2: {len(connect_path(paths=[['start']], n=2)) : > 10} Duration:{round(time.time()-ts,2) : >5}")
 
-print(f"Answer 1: {len(connect_path(paths=[['start']], n=1))}")
-print(f"Answer 2: {len(connect_path(paths=[['start']], n=2))}")
+# Output
+# Answer 1:       4411 Duration: 0.14
+# Answer 2:     136767 Duration: 4.03
