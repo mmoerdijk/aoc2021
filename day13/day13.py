@@ -40,7 +40,18 @@ for axis, line in folds:
 
 grid[grid > 0] = 1
 
-for i in range(grid.shape[0]):
-    print(list(grid[i]))
-
 print(f"Answer 1: {grid.sum()} ")
+print(f"Answer 2: ")
+for i in range(grid.shape[0]):
+    for j in range(grid.shape[1]):
+        print(" " if grid[i,j] == 0 else "#", end="")
+    print("")
+
+# Answer 1: 95.0
+# Answer 2:
+###  #### #  # ###   ##    ## #### #  #
+#  # #    # #  #  # #  #    #    # #  #
+###  ###  ##   #  # #       #   #  #  #
+#  # #    # #  ###  #       #  #   #  #
+#  # #    # #  # #  #  # #  # #    #  #
+###  #    #  # #  #  ##   ##  ####  ##
