@@ -79,3 +79,4 @@ print(f"Answer 2: {calculate_risk(path2, map2):>5} ")
 
 # Answer 1:   498
 # Answer 2:  2901
+print_map(map1)
